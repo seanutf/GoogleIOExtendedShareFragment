@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.seabutf.android.share.googleioextendedfragment'
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.seabutf.android.share.googleioextendedfragment"
         minSdk 21
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -41,4 +41,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    def fragment_version = "1.5.0-rc01"
+
+    // Java language implementation
+    //noinspection GradleDependency
+    implementation "androidx.fragment:fragment:$fragment_version"
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    // Testing Fragments in Isolation
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }
