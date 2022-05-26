@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSingleUi() {
-        startActivity(Intent(this, BannerListActivity::class.java))
+        startActivity(Intent(this, SingleActivity::class.java))
     }
 
     private fun openBannerUi() {
-        startActivity(Intent(this, SingleActivity::class.java))
+        startActivity(Intent(this, BannerListActivity::class.java))
     }
 }
