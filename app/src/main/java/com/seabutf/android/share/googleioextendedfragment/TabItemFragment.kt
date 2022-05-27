@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.seabutf.android.share.googleioextendedfragment.databinding.FragmentTabItemBinding
+import kotlinx.coroutines.launch
 
 private const val ARG_PARAM1 = "param1"
 
@@ -61,10 +65,13 @@ class TabItemFragment : Fragment() {
     }
 
     private fun setBgColor(colorStr: String) {
+        requireParentFragment()
         binding?.flBg?.setBackgroundColor(Color.parseColor(colorStr))
     }
 
     companion object {
+
+        @JvmStatic
         fun newInstance(position: Int) =
             TabItemFragment().apply {
                 arguments = Bundle().apply {

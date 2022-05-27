@@ -1,11 +1,13 @@
 package com.seabutf.android.share.googleioextendedfragment
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultCaller
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -19,11 +21,18 @@ import kotlinx.coroutines.launch
 class TabListFragment : Fragment() {
 
     companion object {
+
+        @JvmStatic
         fun newInstance() = TabListFragment()
     }
 
     private val viewModel: TabListViewModel by viewModels()
     private var binding: FragmentTabListBinding? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        strictMode()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
