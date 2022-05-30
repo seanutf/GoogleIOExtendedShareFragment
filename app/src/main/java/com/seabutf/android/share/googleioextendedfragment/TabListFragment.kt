@@ -10,9 +10,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultCaller
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.*
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.seabutf.android.share.googleioextendedfragment.databinding.FragmentTabListBinding
@@ -31,7 +29,8 @@ class TabListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        strictMode()
+
+        //strictMode()
     }
 
     override fun onCreateView(
@@ -45,7 +44,11 @@ class TabListFragment : Fragment() {
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        userVisibleHint = true
         initView()
+        val ff  = MutableLiveData<String>()
+        ff.value = "ff"
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
 
